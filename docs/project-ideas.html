@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>College Project Ideas</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0b0f1a;
+    --card: #111827;
+    --border: #1e2d40;
+    --accent: #00e5ff;
+    --accent2: #7c3aed;
+    --accent3: #f59e0b;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --tag-bg: #1e2d40;
+  }
+
+  body {
+    font-family: 'Syne', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 40px 20px 60px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: -200px; left: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,229,255,0.07) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+
+  header { margin-bottom: 48px; text-align: center; }
+  header .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  header h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #e2e8f0 30%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  header p {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 400;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .tech-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 48px;
+  }
+  .tech-pill {
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    padding: 5px 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    cursor: default;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 16px 16px 0 0;
+    background: var(--accent-line, var(--accent));
+    opacity: 0.8;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0,229,255,0.25);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+  }
+
+  .card-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+  }
+
+  .card-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 18px;
+    font-weight: 400;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+  .tag {
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px 9px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    color: #94a3b8;
+    letter-spacing: 0.3px;
+  }
+
+  .card-feature {
+    font-size: 12px;
+    color: var(--feature-color, var(--accent));
+    font-family: 'DM Mono', monospace;
+    background: rgba(0,229,255,0.06);
+    border: 1px solid rgba(0,229,255,0.15);
+    border-radius: 8px;
+    padding: 8px 12px;
+    line-height: 1.5;
+  }
+
+  .badge {
+    display: inline-block;
+    position: absolute;
+    top: 18px; right: 18px;
+    background: rgba(0,229,255,0.1);
+    border: 1px solid rgba(0,229,255,0.25);
+    border-radius: 99px;
+    padding: 3px 10px;
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+  }
+
+  /* color variants */
+  .c1 { --accent-line: #00e5ff; --feature-color: #00e5ff; }
+  .c2 { --accent-line: #7c3aed; --feature-color: #a78bfa; }
+  .c3 { --accent-line: #f59e0b; --feature-color: #fbbf24; }
+  .c4 { --accent-line: #10b981; --feature-color: #34d399; }
+  .c5 { --accent-line: #ef4444; --feature-color: #f87171; }
+  .c6 { --accent-line: #ec4899; --feature-color: #f472b6; }
+  .c7 { --accent-line: #6366f1; --feature-color: #818cf8; }
+  .c8 { --accent-line: #14b8a6; --feature-color: #2dd4bf; }
+  .c9 { --accent-line: #f97316; --feature-color: #fb923c; }
+  .c10 { --accent-line: #84cc16; --feature-color: #a3e635; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="eyebrow">// College Projects 2025</div>
+    <h1>10 Project Ideas for<br/>Your Submission</h1>
+    <p>All projects use the tech stack from your reference — React / HTML / CSS / Bootstrap frontend, Java + Spring Boot backend, MySQL / MongoDB / PostgreSQL database.</p>
+  </header>
+
+  <div class="tech-strip">
+    <span class="tech-pill">HTML · CSS · Bootstrap</span>
+    <span class="tech-pill">React</span>
+    <span class="tech-pill">Java + Spring Boot</span>
+    <span class="tech-pill">MySQL / MongoDB / PostgreSQL</span>
+    <span class="tech-pill">REST API</span>
+    <span class="tech-pill">JWT Auth</span>
+  </div>
+
+  <div class="grid">
+
+    <div class="card c1">
+      <span class="badge">Beginner</span>
+      <div class="card-num">01 —</div>
+      <div class="card-title">Student Record Management System</div>
+      <div class="card-desc">Manage student profiles, grades, attendance, and course enrollment. Admins can generate reports; students view their own dashboard.</div>
+      <div class="card-tags">
+        <span class="tag">MySQL</span><span class="tag">JWT Auth</span><span class="tag">REST API</span>
+      </div>
+      <div class="card-feature">✦ Key Feature — Role-based access (Admin / Student / Teacher)</div>
+    </div>
+
+    <div class="card c2">
+      <span class="badge">Intermediate</span>
+      <div class="card-num">02 —</div>
+      <div class="card-title">Employee Payroll Management System</div>
+      <div class="card-desc">Calculate salaries, deductions, and taxes. HR can add employees, approve leaves, and auto-generate PDF payslips monthly.</div>
+      <div class="card-tags">
+        <span class="tag">PostgreSQL</span><span class="tag">PDF Gen</span><span class="tag">Role Mgmt</span>
+      </div>
+      <div class="card-feature">✦ Key Feature — Automated PDF payslip generation + email delivery</div>
+    </div>
+
+    <div class="card c3">
+      <span class="badge">Beginner</span>
+      <div class="card-num">03 —</div>
+      <div class="card-title">Library Management System</div>
+      <div class="card-desc">Track book inventory, issue/return records, fines, and member registrations. Includes barcode-based book lookup.</div>
+      <div class="card-tags">
+        <span class="tag">MySQL</span><span class="tag">Barcode</span><span class="tag">Email Notify</span>
+      </div>
+      <div class="card-feature">✦ Key Feature — Barcode scanner integration + overdue email alerts</div>
+    </div>
+
+    <div class="card c4">
+      <span class="badge">Beginner</span>
+      <div class="card-num">04 —</div>
+      <div class="card-title">Online Quiz Application</div>
+      <div class="card-desc">Teachers create timed quizzes with MCQs. Students attempt them, get instant results, and can view answer analytics after submission.</div>
+      <div class="card-tags">
+        <span class="tag">MongoDB</span><span class="tag">Timer API</span><span class="tag">Analytics</span>
+      </div>
+      <div class="card-feature">✦ Key Feature — Live timer + result analytics with score breakdown</div>
+    </div>
+
+    <div class="card c5">
+      <span class="badge">Intermediate</span>
+      <div class="card-num">05 —</div>
+      <div class="card-title">Attendance Management System</div>
+      <div class="card-desc">QR-code-based daily attendance for classrooms. Faculty can view attendance %, get low-attendance alerts, and export Excel reports.</div>
+      <div class="card-tags">
+        <span class="tag">MySQL</span><span class="tag">QR Code</span><span class="tag">Excel Export</span>
+      </div>
+      <div class="card-feature">✦ Key Feature — QR-based check-in + Excel export for faculty</div>
+    </div>
+
+    <div class="card c6">
+      <span class="badge">Intermediate</span>
+      <div class="card-num">06 —</div>
+      <div class="card-title">Hospital Appointment Booking System</div>
+      <div class="card-desc">Patients book appointments with doctors by specialty and time slot. Automated SMS/email reminders reduce no-shows.</div>
+      <div class="card-tags">
+        <span class="tag">PostgreSQL</span><span class="tag">SMS/Email</span><span class="tag">Scheduling</span>
+      </div>
+      <div class="card-feature">✦ Key Feature — SMS & Email appointment reminders via Twilio / SMTP</div>
+    </div>
+
+    <div class="card c7">
+      <span class="badge">Intermediate</span>
+      <div class="card-num">07 —</div>
+      <div class="card-title">Event Registration Portal</div>
+      <div class="card-desc">College event management — create events, register participants, collect payments, and issue QR-code tickets for entry verification.</div>
+      <div class="card-tags">
+        <span class="tag">MongoDB</span><span class="tag">Payment Gateway</span><span class="tag">QR Ticket</span>
+      </div>
+      <div class="card-feature">✦ Key Feature — Razorpay/Stripe payment + QR ticket generation</div>
+    </div>
+
+    <div class="card c8">
+      <span class="badge">Advanced</span>
+      <div class="card-num">08 —</div>
+      <div class="card-title">Banking Account Management System</div>
+      <div class="card-desc">Simulated banking app with account creation, fund transfers, mini-statements, and real-time transaction notifications with full audit logs.</div>
+      <div class="card-tags">
+        <span class="tag">PostgreSQL</span><span class="tag">Secure Auth</span><span class="tag">Transaction API</span>
+      </div>
+      <div class="card-feature">✦ Key Feature — Secure JWT + OTP 2FA + full transaction audit trail</div>
+    </div>
+
+    <div class="card c9">
+      <span class="badge">Beginner</span>
+      <div class="card-num">09 —</div>
+      <div class="card-title">Personal Expense Tracker</div>
+      <div class="card-desc">Log income and expenses by category. Visual charts show monthly spending trends. Set budget limits with overspend alerts.</div>
+      <div class="card-tags">
+        <span class="tag">MySQL</span><span class="tag">Charts</span><span class="tag">Budget Analytics</span>
+      </div>
+      <div class="card-feature">✦ Key Feature — Interactive pie/bar charts + monthly budget alerts</div>
+    </div>
+
+    <div class="card c10">
+      <span class="badge">Advanced</span>
+      <div class="card-num">10 —</div>
+      <div class="card-title">Inventory Management System</div>
+      <div class="card-desc">Track product stock across warehouse locations. Barcode scanner integration for stock-in/out, low-stock alerts, and supplier management.</div>
+      <div class="card-tags">
+        <span class="tag">MySQL</span><span class="tag">Barcode</span><span class="tag">Stock Alerts</span>
+      </div>
+      <div class="card-feature">✦ Key Feature — Barcode scanner + real-time low-stock notifications</div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
